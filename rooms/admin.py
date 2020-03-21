@@ -14,6 +14,8 @@ class ItemAdmin(admin.ModelAdmin):
 class RoomAdmin(admin.ModelAdmin):
     """ Room Admin Definition """
 
+    """ 주석 추가 """
+
     fieldsets = (
         (
             "Basic Info",
