@@ -27,7 +27,18 @@ class RoomAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             "Basic Info",
-            {"fields": ("name", "description", "country", "city", "address", "price")},
+            {
+                "fields": (
+                    "name",
+                    "description",
+                    "country",
+                    "city",
+                    "address",
+                    "room_type",
+                    "price",
+                    "guests",
+                )
+            },
         ),
         ("Times", {"fields": ("check_in", "check_out", "instant_book")}),
         ("Spaces", {"fields": ("beds", "bedrooms", "baths")}),
@@ -56,6 +67,7 @@ class RoomAdmin(admin.ModelAdmin):
         "count_amenities",
         "count_photos",
         "total_rating",
+        "is_superhost",
     )
 
     ordering = ("name", "price", "bedrooms")
@@ -71,7 +83,7 @@ class RoomAdmin(admin.ModelAdmin):
         "country",
     )
 
-    raw_id_fields = ("host",)
+    # raw_id_fields = ("host",)
 
     search_fields = (
         "=city",
@@ -98,6 +110,9 @@ class RoomAdmin(admin.ModelAdmin):
 
     def count_photos(self, obj):
         return obj.photos.count()
+
+    def is_superhost(self, obj):
+        return obj.host.superhost
 
 
 @admin.register(models.Photo)

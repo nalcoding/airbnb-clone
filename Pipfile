@@ -11,6 +11,8 @@ django = "==2.2.5"
 black = "*"
 pillow = "*"
 django-countries = "*"
+django-youtube-api = "*"
+python-dateutil = "*"
 
 [requires]
 python_version = "3.6"
